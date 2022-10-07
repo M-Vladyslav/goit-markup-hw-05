@@ -486,12 +486,12 @@ button {
 .cards:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
-  transition: transform var(--timing-function);
+  transition: var(--timing-function);
 }
 .cards:hover .image-overlay::before,
 .cards:focus .image-overlay::before {
   transform: translateY(0);
-  transition: transform var(--timing-function);
+  transition: var(--timing-function);
 }
 
 .cards {
@@ -537,7 +537,7 @@ button {
   color: #ffffff;
   opacity: 1;
   transform: translateY(100%);
-  transition: var(--timing-function);
+  transition: transform var(--timing-function);
 }
 .image-overlay:hover .overlay-text,
 .image-overlay:focus .overlay-text {
