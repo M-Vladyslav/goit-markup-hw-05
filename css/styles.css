@@ -330,14 +330,19 @@ button {
   pointer-events: none;
   visibility: hidden;
 }
+
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   min-width: 528px;
   min-height: 581px;
+  transition: transform var(--timing-function);
   background-color: var(--top-line-color);
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
 }
 
 .close-modal {
@@ -347,7 +352,6 @@ button {
   background-color: #ffffff;
   border: none;
 }
-
 .soft-skills-list {
   display: flex;
   padding: 0;
