@@ -9,7 +9,7 @@
   --dark-white-color: #f5f5f5; /*body background*/
   --mail-color: rgba(255, 255, 255, 0.6); /* цвет tel,mail*/
   --button-color: #188ce8; /*кнопка,цвет*/
-  --timing-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --timing-function: 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -92,8 +92,6 @@ button {
 }
 .title {
   border-bottom: 1px solid #ececec;
-  padding-top: 24px;
-  padding-bottom: 25px;
 }
 .main-link {
   display: flex;
@@ -146,7 +144,6 @@ button {
 .contact-mail:hover,
 .contact-mail:focus {
   color: var(--blue-color);
-  transition: var(--timing-function);
 }
 
 .contact .navigation-item + .navigation-item {
@@ -189,16 +186,18 @@ button {
   letter-spacing: 0.02em;
   color: var(--dark-grey-color);
   position: relative;
+  padding: 32px 0;
+  transition: color var(--timing-function);
 }
 .current::after {
   content: '';
   position: absolute;
-  display: block;
-
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
   width: 100%;
   height: 4px;
   background-color: var(--blue-color);
-  margin-top: 32px;
 }
 
 .contact-mail {
@@ -207,14 +206,15 @@ button {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--main-text-color);
+  transition: color var(--timing-function);
 }
 .navigation-header-link:hover,
 .navigation-header-link:focus {
   color: var(--blue-color);
-  transition: var(--timing-function);
 }
 .current {
   color: var(--blue-color);
+  position: relative;
 }
 
 .contact-tel {
@@ -223,11 +223,11 @@ button {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--main-text-color);
+  transition: color var(--timing-function);
 }
 .contact-tel:hover,
 .contact-tel:focus {
   color: var(--blue-color);
-  transition: var(--timing-function);
 }
 .button-list {
   display: flex;
@@ -250,6 +250,8 @@ button {
   display: block;
   border: none;
   border-radius: 4px;
+  transition: color var(--timing-function), background-color var(--timing-function),
+    box-shadow var(--timing-function);
 }
 
 .btn:hover,
@@ -260,7 +262,6 @@ button {
     0px 2px 2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   cursor: pointer;
-  transition: var(--timing-function);
 }
 
 .slogan-name {
@@ -324,6 +325,9 @@ button {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--timing-function), visibility var(--timing-function);
 }
 .backdrop.is-hidden {
   opacity: 0;
@@ -425,14 +429,13 @@ button {
   width: 100%;
   height: 70px;
   font-weight: 700;
-  font-size: 14px;
   line-height: 1.14;
-  text-align: center;
-  padding: 27px;
-  letter-spacing: 0.03em;
   text-transform: uppercase;
   background-color: rgba(47, 48, 58, 0.8);
   color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .image-staff {
   background: #ffffff;
@@ -481,29 +484,33 @@ button {
   flex-wrap: wrap;
   gap: 30px;
 }
-
+.cards {
+  display: block;
+  transition: box-shadow var(--timing-function);
+}
 .cards:hover,
 .cards:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
-  transition: var(--timing-function);
 }
 .cards:hover .image-overlay::before,
 .cards:focus .image-overlay::before {
   transform: translateY(0);
-  transition: var(--timing-function);
+}
+.cards .image-overlay::before {
+  transition: transform var(--timing-function);
 }
 
-.cards {
-  display: block;
-}
 .images-item {
   width: 370px;
 }
-.image-overlay:hover::before,
+
 .image-overlay:focus::before {
   opacity: 0.9;
-  transition: transform var(--timing-function);
+}
+
+.image-overlay::before {
+  transition: opacity var(--timing-function);
 }
 
 .image-overlay {
@@ -516,9 +523,8 @@ button {
   position: absolute;
   width: 100%;
   height: 100%;
+  opacity: 0.9;
   background-color: var(--blue-color);
-
-  opacity: 0;
   transform: translateY(100%);
   transition: transform var(--timing-function);
 }
@@ -537,11 +543,13 @@ button {
   color: #ffffff;
   opacity: 1;
   transform: translateY(100%);
-  transition: transform var(--timing-function);
 }
 .image-overlay:hover .overlay-text,
 .image-overlay:focus .overlay-text {
   transform: translateY(0);
+}
+.image-overlay .overlay-text {
+  transition: transform var(--timing-function), opacity var(--timing-function);
 }
 
 .image-name {
@@ -578,22 +586,22 @@ button {
   border-radius: 50%;
   background-color: var(--top-line-color);
   color: #afb1b8;
+  transition: background-color var(--timing-function);
 }
 
 .staff-link:hover,
 .staff-link:focus {
   background-color: var(--blue-color);
   color: var(--top-line-color);
-  transition: var(--timing-function);
 }
 .staff-icon:hover {
   fill: var(--top-line-color);
   cursor: pointer;
-  transition: var(--timing-function);
 }
 
 .staff-icon {
   fill: currentColor;
+  transition: fill var(--timing-function);
 }
 
 .regular-customers {
@@ -620,6 +628,7 @@ button {
   border: 1px solid #afb1b8;
   padding: 16px 32px;
   color: #afb1b8;
+  transition: color var(--timing-function);
 }
 .icon-client {
   fill: currentColor;
@@ -630,7 +639,6 @@ button {
   color: var(--blue-color);
   border: 1px solid var(--blue-color);
   cursor: pointer;
-  transition: var(--timing-function);
 }
 
 .site-footer {
@@ -661,7 +669,6 @@ button {
 .google-map:hover,
 .google-map:focus {
   color: var(--blue-color);
-  transition: var(--timing-function);
 }
 .google-map {
   font-style: normal;
@@ -672,6 +679,7 @@ button {
   color: var(--top-line-color);
   display: block;
   margin-bottom: 9px;
+  transition: color var(--timing-function);
 }
 
 .contact-email {
@@ -683,11 +691,11 @@ button {
   color: var(--mail-color);
   display: block;
   margin-bottom: 9px;
+  transition: color var(--timing-function);
 }
 .contact-email:hover,
 .contact-email:focus {
   color: var(--blue-color);
-  transition: var(--timing-function);
 }
 .contact-phone {
   font-style: normal;
@@ -696,11 +704,11 @@ button {
   /* or 171% */
   letter-spacing: 0.03em;
   color: var(--mail-color);
+  transition: color var(--timing-function);
 }
 .contact-phone:hover,
 .contact-phone:focus {
   color: var(--blue-color);
-  transition: var(--timing-function);
 }
 .address-link:not(:last-child) {
   margin-bottom: 9px;
@@ -735,6 +743,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color var(--timing-function);
 }
 .footer-social-icon {
   fill: var(--top-line-color);
@@ -744,7 +753,6 @@ button {
   background-color: var(--blue-color);
   cursor: pointer;
   border-radius: 50%;
-  transition: var(--timing-function);
 }
 .footer {
   display: flex;
