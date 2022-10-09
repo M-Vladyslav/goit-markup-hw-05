@@ -488,6 +488,9 @@ button {
   display: block;
   transition: box-shadow var(--timing-function);
 }
+.cards:focus .work-text {
+  transform: translateY(0);
+}
 .cards:hover,
 .cards:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
@@ -534,8 +537,6 @@ button {
 }
 
 .overlay-text {
-  content: '';
-  position: relative;
   padding: 64px 24px;
   font-size: 18px;
   line-height: 1.56;
@@ -545,8 +546,7 @@ button {
   opacity: 1;
 }
 
-.image-overlay:hover .work-text,
-.image-overlay:focus .work-text {
+.image-overlay:hover .work-text {
   transform: translateY(0);
 }
 .image-name {
